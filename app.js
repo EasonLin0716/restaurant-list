@@ -13,10 +13,11 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // layout's handlebars would have to be named as 'main.handlebars'
 app.set('view engine', 'handlebars')
 
-// setting static files
+// 將public資料夾設定為靜態檔案
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
+  // render:渲染，解析 HTML 樣板並繪製出瀏覽器裡的畫面，回傳 HTML 來呈現前端樣板
   res.render('index', { restaurant: restaurantList.results })
 })
 
