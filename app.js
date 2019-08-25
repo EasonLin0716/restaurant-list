@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:id', (req, res) => {
   console.log(req.params.id)
-  const restaurant = restaurantList.results.filter(restaurant => restaurant.id.toString() === req.params.id)
+  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
   console.log(restaurant)
   res.render('show', { restaurant: restaurant[0] })
 })
