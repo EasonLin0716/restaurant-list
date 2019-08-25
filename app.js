@@ -22,17 +22,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:id', (req, res) => {
-  console.log(req.params.id)
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
-  console.log(restaurant)
   res.render('show', { restaurant: restaurant })
 })
 
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  console.log(keyword)
+  const keyword = new RegExp(req.query.keyword, 'ig')
   const restaurantResult = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+    return restaurant.name.match(keyword) || restaurant.location.match(keyword) || restaurant.category.match(keyword)
   })
   res.render('index', { restaurant: restaurantResult })
 })
