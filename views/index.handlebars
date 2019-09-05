@@ -42,6 +42,13 @@
             </div>
           </div>
         </a>
+        <form action="/restaurants/:id/delete" method="POST">
+          <div class="d-flex justify-content-end align-items-center" id="links">
+            <a href="#">Edit</a>
+            <a href="#">Detail</a>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </form>
         {{/each}}
       </div>
     </div>
