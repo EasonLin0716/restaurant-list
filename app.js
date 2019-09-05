@@ -3,21 +3,47 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+
 // express handlebars here
 const exphbs = require('express-handlebars')
 // require restaurant data here
 const restaurantList = require('./restaurant.json')
+
+
+// load in mongoose
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/restaurantList', { useNewUrlParser: true }) // setting connection to mongoDB
+// mongoose 連線後透過 mongoose.connection 拿到 Connection 的物件
+const db = mongoose.connection
+
+
+// connecting error
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+// connecting successful
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
+
+
+// require restaurantList model
+const RestaurantList = require('./models/restaurantList')
+
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // layout's handlebars would have to be named as 'main.handlebars'
 app.set('view engine', 'handlebars')
 
+
 // 將public資料夾設定為靜態檔案
 app.use(express.static('public'))
 
+
 app.get('/', (req, res) => {
-  // render:渲染，解析 HTML 樣板並繪製出瀏覽器裡的畫面，回傳 HTML 來呈現前端樣板
+  // '/' will render index.handlebars
   res.render('index', { restaurant: restaurantList.results })
 })
 
