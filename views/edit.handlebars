@@ -1,13 +1,47 @@
 <!-- ./views/edit.handlebars -->
-<form action="/restaurants/{{{restaurant.id}}}/edit" method="POST">
-  <input type="text" placeholder="name" name="name" value="{{restaurant.name}}">
-  <input type="text" placeholder="name_en" name="name_en" value="" {{restaurant.name_en}}"">
-  <input type="text" placeholder="category" name="category" value="{{restaurant.category}}">
-  <input type="text" placeholder="image" name="image" value="{{restaurant.image}}">
-  <input type="text" placeholder="location" name="location" value={{restaurant.location}}>
-  <input type="text" placeholder="phone" name="phone" value="{{restaurant.phone}}">
-  <input type="text" placeholder="google_map" name="google_map" value="{{restaurant.google_map}}">
-  <input type="text" placeholder="rating" name="rating" value="{{restaurant.rating}}">
-  <input type="text" placeholder="description" name="description" value="{{restaurant.description}}">
-  <button type="submit">Edit</button>
-</form>
+<div class="container my-4">
+  <form action="/restaurants/{{{restaurant.id}}}/edit" method="POST">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳名字<span class="text-danger">*</span></label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳名字..." name="name" value="{{restaurant.name}}"
+        required="required">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳英文名字</label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳英文名字..." value=" {{restaurant.name_en}}" name="name_en">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳種類</label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳種類..." name="category" value="{{restaurant.category}}">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳照片<span class="text-danger">*</span></label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳照片..." name="image" value="{{restaurant.image}}"
+        required="required">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳位置<span class="text-danger">*</span></label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳位置..." name="location" value={{restaurant.location}}
+        required="required">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳電話<span class="text-danger">*</span></label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳電話..." name="phone" value="{{restaurant.phone}}"
+        required="required">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳地圖</label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳地圖..." value="{{restaurant.google_map}}" name="google_map">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳評價</label>
+      <input class="col-sm-10" type="text" placeholder="請輸入餐廳評價..." name="rating" value="{{restaurant.rating}}">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">餐廳描述<span class="text-danger">*</span></label>
+      <input class="col-sm-10" type="text" placeholder="請為餐廳寫點描述..." value="{{restaurant.description}}"
+        name="description" required="required">
+    </div>
+    <button class="btn btn-primary btn-lg" type="submit">修改完成</button>
+  </form>
+</div>
