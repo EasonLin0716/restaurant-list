@@ -33,14 +33,17 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 // require restaurantList model
-const RestaurantList = require('./models/restaurantList')
+const Restaurants = require('./models/restaurantList')
 
 
 /* ---------- 設定路由 ---------- */
 // restaurants 首頁
 app.get('/', (req, res) => {
-  // '/' will render index.handlebars
-  res.render('index', { restaurant: restaurantList.results })
+  Restaurants.find((err, restaurant) => { // 取得所有餐廳資料
+    if (err) return console.error(err)
+    // 渲染至index.handlebars
+    return res.render('index', { restaurant: restaurant })
+  })
 })
 
 // 列出全部 restaurants
