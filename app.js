@@ -59,7 +59,7 @@ app.get('/restaurants/new', (req, res) => {
 // 顯示一筆 restaurant 的詳細內容
 app.get('/restaurants/:id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
-  res.render('show', { restaurant: restaurant })
+  res.render('detail', { restaurant: restaurant })
 })
 
 // 新增一筆 restaurant
