@@ -39,11 +39,11 @@
         style="max-width: 600px;">
     </div>
   </div>
-  <form class="m-1" action="/restaurants/{{{todo.id}}}/delete" method="POST">
+  <form class="m-1" action="/restaurants/{{{restaurant.id}}}/delete" method="POST">
     <div class="d-flex justify-content-center align-items-center m-4" id="links">
-      <a href="/" class="m-1">Back</a>
-      <a href="/restaurants/{{{restaurant.id}}}/edit" class="m-1">Edit</a>
-      <button type="submit" class="m-1 btn btn-danger">Delete</button>
+      <a href="/" class="m-1">回首頁</a>
+      <a href="/restaurants/{{{restaurant.id}}}/edit" class="m-1">編輯</a>
+      <button type="submit" onclick="return confirmDelete()" class="m-1 btn btn-danger">刪除</button>
     </div>
   </form>
 </div>
