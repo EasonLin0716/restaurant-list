@@ -72,10 +72,6 @@ header {
   background: #ced4da;
 }
 
-#links * {
-  padding-right: 12px;
-}
-
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;

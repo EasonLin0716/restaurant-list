@@ -120,7 +120,13 @@ app.post('/restaurants/:id/edit', (req, res) => {
 
 // 刪除 restaurants
 app.post('/restaurants/:id/delete', (req, res) => {
-  res.send('刪除 restaurant')
+  Restaurants.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  })
 })
 
 // 搜尋一筆 restaurant

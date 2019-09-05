@@ -41,13 +41,13 @@
                 <i class="fas fa-star fa-xs"></i>
               </span>
             </div>
-            <form class="m-1" action="/restaurants/:id/delete" method="POST">
-              <div class="d-flex justify-content-end align-items-center" id="links">
-                <a href="/restaurants/{{this.id}}/edit">Edit</a>
-                <a href="/restaurants/{{this.id}}">Detail</a>
+            <div class="d-flex justify-content-end align-items-center m-2" id="links">
+              <a href="/restaurants/{{{this.id}}}/edit" class="m-1">Edit</a>
+              <a href="/restaurants/{{{this.id}}}" class="m-1">Detail</a>
+              <form action="/restaurants/{{{this.id}}}/delete" method="POST" class="m-1" style="display: inline;">
                 <button class="btn btn-danger">Delete</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </a>
         {{/each}}
