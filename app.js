@@ -2,8 +2,6 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// require restaurant data here
-const restaurantList = require('./restaurant.json')
 // 將public資料夾設定為靜態檔案
 app.use(express.static('public'))
 
@@ -15,6 +13,11 @@ const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // layout's handlebars would have to be named as 'main.handlebars'
 app.set('view engine', 'handlebars')
+
+// require body-parser
+const bodyParser = require('body-parser');
+// setting bodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /* ---------- 載入資料庫 ---------- */
@@ -53,7 +56,7 @@ app.get('/restaurants', (req, res) => {
 
 // 新增一筆 restaurant 頁面
 app.get('/restaurants/new', (req, res) => {
-  res.send('新增 restaurant 頁面')
+  return res.render('new')
 })
 
 // 顯示一筆 restaurant 的詳細內容
@@ -64,7 +67,24 @@ app.get('/restaurants/:id', (req, res) => {
 
 // 新增一筆 restaurant
 app.post('/restaurants', (req, res) => {
-  res.send('建立 restaurant')
+  console.log(req.body)
+  // 建立 Restaurant model 實例
+  const restaurants = new Restaurants({
+    name: req.body.name, // name 是從 new 頁面 form 傳過來
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+  // 存入資料庫
+  restaurants.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')  // 新增完成後，將使用者導回首頁
+  })
 })
 
 // 修改 restaurant 頁面
