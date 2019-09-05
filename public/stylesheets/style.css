@@ -68,6 +68,15 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.create-btn {
+  margin: 10px;
+}
+
+.create-btn a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .footer-copyright {
   background: #ced4da;
 }
