@@ -61,8 +61,10 @@ app.get('/restaurants/new', (req, res) => {
 
 // 顯示一筆 restaurant 的詳細內容
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.id)
-  res.render('detail', { restaurant: restaurant })
+  Restaurants.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('detail', { restaurant: restaurant })
+  })
 })
 
 // 新增一筆 restaurant
@@ -70,7 +72,7 @@ app.post('/restaurants', (req, res) => {
   console.log(req.body)
   // 建立 Restaurant model 實例
   const restaurants = new Restaurants({
-    name: req.body.name, // name 是從 new 頁面 form 傳過來
+    name: req.body.name, // 從 new 頁面 form 傳過來
     name_en: req.body.name_en,
     category: req.body.category,
     image: req.body.image,
