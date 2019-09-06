@@ -44,7 +44,8 @@
             <div class="d-flex justify-content-end align-items-center m-2" id="links">
               <a href="/restaurants/{{{this.id}}}/edit" class="btn btn-success m-1">編輯</a>
               <a href="/restaurants/{{{this.id}}}" class="btn btn-warning m-1">詳細資訊</a>
-              <form action="/restaurants/{{{this.id}}}/delete" method="POST" class="m-1" style="display: inline;">
+              <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" class="m-1"
+                style="display: inline;">
                 <button onclick="return confirmDelete()" class="btn btn-danger">刪除</button>
               </form>
             </div>

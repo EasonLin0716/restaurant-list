@@ -52,7 +52,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // 修改 restaurant
-router.post('/:id/edit', (req, res) => {
+router.put('/:id', (req, res) => {
   console.log(req.body)
   Restaurants.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
@@ -73,7 +73,7 @@ router.post('/:id/edit', (req, res) => {
 })
 
 // 刪除 restaurants
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   Restaurants.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {

@@ -7,7 +7,7 @@ app.use(express.static('public'))
 
 
 /* ---------- 載入中介軟體 ---------- */
-// express handlebars here
+// require express handlebars
 const exphbs = require('express-handlebars')
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -18,6 +18,11 @@ app.set('view engine', 'handlebars')
 const bodyParser = require('body-parser');
 // setting bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// require method-override
+const methodOverride = require('method-override')
+// setting method-override
+app.use(methodOverride('_method'))
 
 
 /* ---------- 載入資料庫 ---------- */
@@ -43,8 +48,6 @@ const Restaurants = require('./models/restaurantList')
 app.use('/', require('./routes/homes'))
 app.use('/restaurants', require('./routes/restaurant-list'))
 app.use('/search', require('./routes/search'))
-
-
 
 
 /* ---------- 連線監聽 ---------- */
