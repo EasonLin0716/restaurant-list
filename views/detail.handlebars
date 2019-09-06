@@ -41,8 +41,8 @@
   </div>
   <form class="m-1" action="/restaurants/{{{restaurant.id}}}/delete" method="POST">
     <div class="d-flex justify-content-center align-items-center m-4" id="links">
-      <a href="/" class="m-1">回首頁</a>
-      <a href="/restaurants/{{{restaurant.id}}}/edit" class="m-1">編輯</a>
+      <a href="/" class="btn btn-success m-1">回首頁</a>
+      <a href="/restaurants/{{{restaurant.id}}}/edit" class="btn btn-warning m-1">編輯</a>
       <button type="submit" onclick="return confirmDelete()" class="m-1 btn btn-danger">刪除</button>
     </div>
   </form>

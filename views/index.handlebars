@@ -1,8 +1,6 @@
 <!-- 這支局部樣板內所撰寫的內容，之後就會出現在 layouts 裡 main.handlebars 檔案的 {{{ body }}} -->
 <!-- ./views/index.handlebars -->
-<button class="btn btn-lg btn-primary create-btn">
-  <a href="/restaurants/new">新增餐廳</a>
-</button>
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -44,8 +42,8 @@
               </span>
             </div>
             <div class="d-flex justify-content-end align-items-center m-2" id="links">
-              <a href="/restaurants/{{{this.id}}}/edit" class="m-1">編輯</a>
-              <a href="/restaurants/{{{this.id}}}" class="m-1">詳細資訊</a>
+              <a href="/restaurants/{{{this.id}}}/edit" class="btn btn-success m-1">編輯</a>
+              <a href="/restaurants/{{{this.id}}}" class="btn btn-warning m-1">詳細資訊</a>
               <form action="/restaurants/{{{this.id}}}/delete" method="POST" class="m-1" style="display: inline;">
                 <button onclick="return confirmDelete()" class="btn btn-danger">刪除</button>
               </form>
