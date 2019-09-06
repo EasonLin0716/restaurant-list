@@ -40,107 +40,11 @@ const Restaurants = require('./models/restaurantList')
 
 
 /* ---------- 設定路由 ---------- */
-// restaurants 首頁
-app.get('/', (req, res) => {
-  Restaurants.find((err, restaurant) => { // 取得所有餐廳資料
-    if (err) return console.error(err)
-    // 渲染至index.handlebars
-    return res.render('index', { restaurant: restaurant })
-  })
-})
+app.use('/', require('./routes/homes'))
+app.use('/restaurants', require('./routes/restaurant-list'))
+app.use('/search', require('./routes/search'))
 
-// 列出全部 restaurants
-app.get('/restaurants', (req, res) => {
-  res.send('列出所有 restaurants')
-})
 
-// 新增一筆 restaurant 頁面
-app.get('/restaurants/new', (req, res) => {
-  return res.render('new')
-})
-
-// 顯示一筆 restaurant 的詳細內容
-app.get('/restaurants/:id', (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    return res.render('detail', { restaurant: restaurant })
-  })
-})
-
-// 新增一筆 restaurant
-app.post('/restaurants', (req, res) => {
-  console.log(req.body)
-  // 建立 Restaurant model 實例
-  const restaurants = new Restaurants({
-    name: req.body.name, // 從 new 頁面 form 傳過來
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    description: req.body.description,
-  })
-  // 存入資料庫
-  restaurants.save(err => {
-    if (err) return console.error(err)
-    return res.redirect('/')  // 新增完成後，將使用者導回首頁
-  })
-})
-
-// 修改 restaurant 頁面
-app.get('/restaurants/:id/edit', (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    return res.render('edit', { restaurant: restaurant })
-  })
-})
-
-// 修改 restaurant
-app.post('/restaurants/:id/edit', (req, res) => {
-  console.log(req.body)
-  Restaurants.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    restaurant.name = req.body.name
-    restaurant.name_en = req.body.name_en
-    restaurant.category = req.body.category
-    restaurant.image = req.body.image
-    restaurant.location = req.body.location
-    restaurant.phone = req.body.phone
-    restaurant.google_map = req.body.google_map
-    restaurant.rating = req.body.rating
-    restaurant.description = req.body.description
-    restaurant.save(err => {
-      if (err) return console.error(err)
-      return res.redirect(`/restaurants/${req.params.id}`)
-    })
-  })
-})
-
-// 刪除 restaurants
-app.post('/restaurants/:id/delete', (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
-    if (err) return console.error(err)
-    restaurant.remove(err => {
-      if (err) return console.error(err)
-      return res.redirect('/')
-    })
-  })
-})
-
-// 搜尋一筆 restaurant
-app.get('/search', (req, res) => {
-  const regex = new RegExp(req.query.keyword, 'gi')
-  Restaurants.find((err, restaurants) => {
-    if (err) return console.log(err)
-    const restaurantResult = restaurants.filter(restaurant => {
-      return restaurant.name.match(regex) || restaurant.category.match(regex) || restaurant.location.match(regex)
-    })
-    console.log(restaurantResult)
-    return res.render('index', { restaurant: restaurantResult })
-  })
-})
 
 
 /* ---------- 連線監聽 ---------- */
