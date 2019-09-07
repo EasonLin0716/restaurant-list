@@ -1,6 +1,7 @@
 # Restaurant-list
-餐廳推薦系統2.0
+餐廳推薦系統ver2.1
 ## Updates
+9/7 增加了排序功能
 9/6 使用者現在可以建立、編輯或刪除餐廳資料
 ## Features
 1. 在首頁中顯示所有餐廳
@@ -10,6 +11,7 @@
 5. 點選右上方「新增餐廳」來新增新的餐廳資料
 6. 點選任一餐廳中的編輯來編輯餐廳資料
 7. 點選任一餐廳中的刪除來刪除餐廳資料（請小心使用！）
+8. 點選搜尋右方的排序功能來達成理想排序
 ## Preview
 ![Cover](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant2.0_cover.JPG)
 ![Info](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant2.0_info.JPG)
