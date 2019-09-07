@@ -14,7 +14,7 @@
 7. 點選任一餐廳中的刪除來刪除餐廳資料（請小心使用！）
 8. 點選搜尋右方的排序功能來達成理想排序
 ## Preview
-![Cover](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant2.0_cover.JPG)
+![Cover](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant2.1_cover.jpg)
 ![Info](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant2.0_info.JPG)
 ## Environment set up
 1. Node.js
