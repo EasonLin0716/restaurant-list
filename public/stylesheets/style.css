@@ -85,6 +85,11 @@ header {
   background: #ced4da;
 }
 
+#restaurant:hover {
+   box-shadow: 0 16px 22px 0 rgba(90, 91, 95, 0.3);
+   top: -5px;
+}
+
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;
