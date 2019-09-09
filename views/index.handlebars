@@ -24,10 +24,15 @@
       排序方式
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">A->Z</a>
-      <a class="dropdown-item" href="/?sortTarget=name&sortType=desc">Z->A</a>
-      <a class="dropdown-item" href="/?sortTarget=category&sortType=asc">類型</a>
-      <a class="dropdown-item" href="/?sortTarget=location&sortType=asc">地區</a>
+      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=asc"
+        {{else}} "/?sortTarget=name&sortType=asc" {{/if}}>A->Z
+      </a>
+      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=desc"
+        {{else}} "/?sortTarget=name&sortType=desc" {{/if}}>Z->A</a>
+      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=category&sortType=asc"
+        {{else}} "/?sortTarget=category&sortType=asc" {{/if}}>類型</a>
+      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=location&sortType=asc"
+        {{else}} "/?sortTarget=location&sortType=asc" {{/if}}>地區</a>
     </div>
   </div>
 </div>

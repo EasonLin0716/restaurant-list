@@ -5,14 +5,23 @@ const Restaurants = require('../models/restaurantList')
 
 // 搜尋一筆 restaurant
 router.get('/', (req, res) => {
-  const regex = new RegExp(req.query.keyword, 'gi')
+  const keyword = req.query.keyword
+  const regex = new RegExp(keyword, 'gi')
+
+  const sortResult = {}
+  sortResult[req.query.sortTarget] = req.query.sortType
+
   Restaurants.find((err, restaurants) => {
     if (err) return console.log(err)
-    const restaurantResult = restaurants.filter(restaurant => {
+
+    // return search result
+    const searchResult = restaurants.filter(restaurant => {
       return restaurant.name.match(regex) || restaurant.category.match(regex) || restaurant.location.match(regex)
     })
-    console.log(restaurantResult)
-    return res.render('index', { restaurant: restaurantResult })
+
+    console.log(searchResult)
+    // keyword will be rendered if user searched, which means user can sort after searching
+    return res.render('index', { restaurant: searchResult, keyword })
   })
 })
 
