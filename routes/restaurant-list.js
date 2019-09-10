@@ -3,11 +3,6 @@ const router = express.Router()
 // require restaurantList model
 const Restaurants = require('../models/restaurantList')
 
-// 列出全部 restaurants
-router.get('/', (req, res) => {
-  res.send('列出所有 restaurants')
-})
-
 // 新增一筆 restaurant 頁面
 router.get('/new', (req, res) => {
   return res.render('new')
@@ -24,6 +19,11 @@ router.get('/:id', (req, res) => {
 // 新增一筆 restaurant
 router.post('/', (req, res) => {
   console.log(req.body)
+
+  if (!req.body.name || !req.body.image || !req.body.location || !req.body.phone || !req.body.description) {
+    res.render('new')
+  }
+
   // 建立 Restaurant model 實例
   const restaurants = new Restaurants({
     name: req.body.name, // 從 new 頁面 form 傳過來
@@ -54,6 +54,11 @@ router.get('/:id/edit', (req, res) => {
 // 修改 restaurant
 router.put('/:id', (req, res) => {
   console.log(req.body)
+
+  if (!req.body.name || !req.body.image || !req.body.location || !req.body.phone || !req.body.description) {
+    res.render('edit')
+  }
+
   Restaurants.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.name = req.body.name
