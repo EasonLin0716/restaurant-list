@@ -22,6 +22,8 @@
 3. handlebars.js
 4. express body-parser
 5. mongoDB
+
+Bootstrap樣式：https://bootswatch.com/spacelab/
 ## Installation
 1. Clone me at https://github.com/EasonLin0716/restaurant-list.git
 2. Open a terminal
