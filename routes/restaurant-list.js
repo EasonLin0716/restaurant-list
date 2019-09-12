@@ -3,6 +3,16 @@ const router = express.Router()
 // require restaurantList model
 const Restaurants = require('../models/restaurantList')
 
+// 登入頁面
+router.get('/login', (req, res) => {
+  res.render('login')
+})
+
+// 註冊頁面
+router.get('/register', (req, res) => {
+  res.render('register')
+})
+
 // 新增一筆 restaurant 頁面
 router.get('/new', (req, res) => {
   return res.render('new')
