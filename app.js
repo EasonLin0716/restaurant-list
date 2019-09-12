@@ -2,7 +2,6 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// 將public資料夾設定為靜態檔案
 app.use(express.static('public'))
 
 
@@ -23,6 +22,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const methodOverride = require('method-override')
 // setting method-override
 app.use(methodOverride('_method'))
+
+// require express-session
+const session = require('express-session')
+// register express-session and set
+app.use(session({
+  secret: 'your secret key',   // secret: 定義一組屬於你的字串做為私鑰
+  resave: false,
+  saveUninitialized: true
+}))
 
 
 /* ---------- 載入資料庫 ---------- */
