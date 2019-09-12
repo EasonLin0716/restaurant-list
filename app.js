@@ -48,6 +48,7 @@ const Restaurants = require('./models/restaurantList')
 app.use('/', require('./routes/homes'))
 app.use('/restaurants', require('./routes/restaurant-list'))
 app.use('/search', require('./routes/search'))
+app.use('/users', require('./routes/user'))
 
 
 /* ---------- 連線監聽 ---------- */
