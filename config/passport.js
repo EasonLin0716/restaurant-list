@@ -1,9 +1,11 @@
 // config/passport.js
-
 const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
-// load User model
+// require bcrypt
+const bcrypt = require('bcryptjs')
+// require User model
 const User = require('../models/user')
+
 module.exports = passport => {
   // Use passport official site syntax
   passport.use( // Define usernameField as email
@@ -14,13 +16,25 @@ module.exports = passport => {
         if (!user) {
           return done(null, false, { message: 'That email is not registered.' })
         }
-        if (user.password != password) {
-          return done(null, false, { message: 'Email or password incorrect.' })
-        }
-        return done(null, user)
+
+        // use bcrypt to compare user's typed password is equal to db's password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err
+          if (isMatch) {
+            return done(null, user)
+          } else {
+            return done(null, false, { message: 'Email or Password incorrect' })
+          }
+        })
+
+        // if (user.password != password) {
+        //   return done(null, false, { message: 'Email or password incorrect.' })
+        // }
+        // return done(null, user)
       })
     })
   )
+
   // serialize and deserialize
   passport.serializeUser((user, done) => {
     done(null, user.id)
