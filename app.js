@@ -32,6 +32,19 @@ app.use(session({
   saveUninitialized: true
 }))
 
+// require passport
+const passport = require('passport')
+// use passport
+app.use(passport.initialize())
+app.use(passport.session())
+// load passport config
+require('./config/passport')(passport)
+// when log in we can get user info to use in view
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 
 /* ---------- 載入資料庫 ---------- */
 // load in mongoose
