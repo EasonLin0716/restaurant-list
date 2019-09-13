@@ -19,20 +19,25 @@
       </div>
     </div>
   </div>
-  <div class="dropdown mr-5">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-      排序方式
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=asc"
-        {{else}} "/?sortTarget=name&sortType=asc" {{/if}}>A->Z
-      </a>
-      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=desc"
-        {{else}} "/?sortTarget=name&sortType=desc" {{/if}}>Z->A</a>
-      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=category&sortType=asc"
-        {{else}} "/?sortTarget=category&sortType=asc" {{/if}}>類型</a>
-      <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=location&sortType=asc"
-        {{else}} "/?sortTarget=location&sortType=asc" {{/if}}>地區</a>
+  <div class="row">
+    <div class="dropdown mr-3">
+      <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+        排序方式
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=asc"
+          {{else}} "/?sortTarget=name&sortType=asc" {{/if}}>A->Z
+        </a>
+        <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=name&sortType=desc"
+          {{else}} "/?sortTarget=name&sortType=desc" {{/if}}>Z->A</a>
+        <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=category&sortType=asc"
+          {{else}} "/?sortTarget=category&sortType=asc" {{/if}}>類型</a>
+        <a class="dropdown-item" href={{#if keyword}} "/search/?keyword={{keyword}}&sortTarget=location&sortType=asc"
+          {{else}} "/?sortTarget=location&sortType=asc" {{/if}}>地區</a>
+      </div>
+    </div>
+    <div>
+      <a class="btn btn-lg btn-primary" href="/restaurants/new">新增餐廳</a>
     </div>
   </div>
 </div>

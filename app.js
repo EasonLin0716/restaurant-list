@@ -42,6 +42,7 @@ require('./config/passport')(passport)
 // when log in we can get user info to use in view
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated() // check if user is already logged in for view to use
   next()
 })
 
