@@ -1,6 +1,10 @@
 /* ---------- 基本設定 ---------- */
 const express = require('express')
 const app = express()
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {      // 如果不是 production 模式
+  require('dotenv').config()                      // 使用 dotenv 讀取 .env 檔案
+}
 const port = 3000
 app.use(express.static('public'))
 
@@ -39,10 +43,16 @@ app.use(passport.initialize())
 app.use(passport.session())
 // load passport config
 require('./config/passport')(passport)
-// when log in we can get user info to use in view
+
+// require connect-flash
+const flash = require('connect-flash')
+app.use(flash())
+
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated() // check if user is already logged in for view to use
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
