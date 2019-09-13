@@ -26,8 +26,8 @@
 3. 在檔案 \restaurant-list 根目錄中創建一個名為 `.env` 的檔案，準備好您的金鑰並輸入以下指令：
 
 ```
-   FACEBOOK_ID = <Your APP ID>
-   FACEBOOK_SECRET = <Your App Secret>
+   FACEBOOK_ID = <在此輸入FB ID>
+   FACEBOOK_SECRET = <在此輸入FB Secret>
    CALLBACK_DOMAIN = http://localhost:3000 
 ```
 
