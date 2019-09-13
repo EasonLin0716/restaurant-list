@@ -13,7 +13,8 @@ router.get('/', authenticated, (req, res) => {
   const sortResult = {}
   // e.g. sortResult = {}; sortResult = { name: 'asc' }
   sortResult[req.query.sortTarget] = req.query.sortType
-  Restaurants.find({})
+  // 針對不同使用者只載入自己的資料
+  Restaurants.find({ userId: req.user._id })
     // e.g. sort({})->什麼也不做; sort({ name: 'asc' })->依name升冪排序
     .sort(sortResult)
     .exec((err, restaurant) => {

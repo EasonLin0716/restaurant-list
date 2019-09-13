@@ -46,12 +46,15 @@ app.use((req, res, next) => {
   next()
 })
 
+// require bcrypt library
+const bcrypt = require('bcryptjs')
+
 
 /* ---------- 載入資料庫 ---------- */
 // load in mongoose
 const mongoose = require('mongoose')
 // setting connection to mongoDB
-mongoose.connect('mongodb://localhost/restaurantList', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/restaurantList', { useNewUrlParser: true, useCreateIndex: true })
 // mongoose 連線後透過 mongoose.connection 拿到 Connection 的物件
 const db = mongoose.connection
 // db connecting error

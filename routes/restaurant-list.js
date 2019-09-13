@@ -12,7 +12,8 @@ router.get('/new', authenticated, (req, res) => {
 
 // 顯示一筆 restaurant 的詳細內容
 router.get('/:id', authenticated, (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
+  // 先找出 _id 一樣的 restaurant, 並確保這筆 restaurant 屬於目前登入的 user
+  Restaurants.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('detail', { restaurant: restaurant })
   })
@@ -37,6 +38,7 @@ router.post('/', authenticated, (req, res) => {
     google_map: req.body.google_map,
     rating: req.body.rating,
     description: req.body.description,
+    userId: req.user._id
   })
   // 存入資料庫
   restaurants.save(err => {
@@ -47,7 +49,7 @@ router.post('/', authenticated, (req, res) => {
 
 // 修改 restaurant 頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
+  Restaurants.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('edit', { restaurant: restaurant })
   })
@@ -61,7 +63,7 @@ router.put('/:id', authenticated, (req, res) => {
     res.render('edit')
   }
 
-  Restaurants.findById(req.params.id, (err, restaurant) => {
+  Restaurants.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.name = req.body.name
     restaurant.name_en = req.body.name_en
@@ -81,7 +83,7 @@ router.put('/:id', authenticated, (req, res) => {
 
 // 刪除 restaurants
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Restaurants.findById(req.params.id, (err, restaurant) => {
+  Restaurants.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
       if (err) return console.error(err)
