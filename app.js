@@ -46,9 +46,6 @@ app.use((req, res, next) => {
   next()
 })
 
-// require bcrypt library
-const bcrypt = require('bcryptjs')
-
 
 /* ---------- 載入資料庫 ---------- */
 // load in mongoose
@@ -74,6 +71,7 @@ app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant-list'))
 app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/users'))
+app.use('/auth', require('./routes/auths'))
 
 
 /* ---------- 連線監聽 ---------- */
