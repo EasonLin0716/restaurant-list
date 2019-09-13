@@ -66,7 +66,7 @@ const Restaurants = require('./models/restaurantList')
 
 
 /* ---------- 設定路由 ---------- */
-app.use('/', require('./routes/homes'))
+app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant-list'))
 app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/users'))

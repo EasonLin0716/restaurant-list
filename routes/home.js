@@ -3,8 +3,11 @@ const router = express.Router()
 // require restaurantList model
 const Restaurants = require('../models/restaurantList')
 
+// require authenticated from auth middleware
+const { authenticated } = require('../config/auth')
+
 // restaurants 首頁
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   console.log(req.query)
   // sortResult 用於存放透過req.query自index.handlebars下拉式選單中網址取得的值
   const sortResult = {}
