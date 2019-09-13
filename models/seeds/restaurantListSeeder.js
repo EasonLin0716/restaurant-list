@@ -23,6 +23,7 @@ db.once('open', () => {
   // load json data into database
   User.create(userJson.results).then(() =>
 
+    // 找到 user1 並將 _id 加至 restaurantJson 
     User.find({ email: 'user1@example.com' }, (err, user) => {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(user[0].password, salt, (err, hash) => {
@@ -39,6 +40,7 @@ db.once('open', () => {
 
   ).then(() =>
 
+    // 找到 user2 並將 _id 加至 restaurantJson
     User.find({ email: 'user2@example.com' }, (err, user) => {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(user[0].password, salt, (err, hash) => {
@@ -55,6 +57,7 @@ db.once('open', () => {
 
   ).then(() =>
 
+    // 最後再將符合條件的 restaurantJson 資料新增至 collection
     restaurantList.create(restaurantJson.results)
 
   )
