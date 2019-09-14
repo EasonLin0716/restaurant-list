@@ -1,6 +1,8 @@
 # Restaurant-list
 餐廳推薦系統ver3.0
 ## Updates
+9/14 增加了第三方 Google 登入功能
+
 9/13 增加了登入、註冊功能
 
 9/7 增加了排序功能
@@ -27,8 +29,12 @@
 
 ```
    FACEBOOK_ID = <在此輸入FB ID>
-   FACEBOOK_SECRET = <在此輸入FB Secret>
-   CALLBACK_DOMAIN = http://localhost:3000 
+   FACEBOOK_SECRET = <在此輸入FB SECRET>
+   FACEBOOK_CALLBACK=http://www.example.com/auth/facebook/callback 
+
+   GOOGLE_ID = <在此輸入GOOGLE ID>
+   GOOGLE_SECRET = <在此輸入GOOGLE SECRET>
+   GOOGLE_CALLBACK=http://www.example.com/auth/google/callback
 ```
 
 4. 回到終端機，在根目錄下輸入
