@@ -90,6 +90,10 @@ header {
    top: -5px;
 }
 
+#oath-login i {
+  font-size: 36px;
+}
+
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;
