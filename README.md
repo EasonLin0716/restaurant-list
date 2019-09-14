@@ -12,7 +12,7 @@
 為您量身打造的餐廳推薦網站，您可以註冊一組屬於您自己的帳密，或透過Facebook直接登入，在餐廳清單中瀏覽、新增、編輯或刪除您的餐廳。
 
 ## Preview
-![Login](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_login.JPG)
+![Login](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_login2.JPG)
 ![Cover](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_cover.JPG)
 ![Info](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_detail.JPG)
 
@@ -79,6 +79,7 @@
 10. "passport": "^0.4.0",
 11. "passport-facebook": "^3.0.0",
 12. "passport-local": "^1.0.0"
+13. "passport-google-oauth20": "^2.0.0"
 
 Bootstrap樣式：https://bootswatch.com/spacelab/
 
