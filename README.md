@@ -1,70 +1,74 @@
 # Restaurant-list
-餐廳推薦系統ver3.0
+Restaurant-list ver3.0 (餐廳推薦系統ver3.0)
 ## Updates
-9/14 增加了第三方 Google 登入功能
+9/14 Users can now login through google account
 
-9/13 增加了登入、註冊功能
+9/13 login, register added
 
-9/7 增加了排序功能
+9/7 list sort added
 
-9/6 使用者現在可以建立、編輯或刪除餐廳資料
+9/6 Users can now do CRUD in this application
 ## Features
-為您量身打造的餐廳推薦網站，您可以註冊一組屬於您自己的帳密，或透過Facebook直接登入，在餐廳清單中瀏覽、新增、編輯或刪除您的餐廳。
+A restaurant-list built for you. You can register your own account, or login directly by facebook or google account. You can create, read, update and delete your own restaurants.
 
 ## Preview
 ![Login](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_login2.JPG)
 ![Cover](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_cover.JPG)
 ![Info](https://github.com/EasonLin0716/restaurant-list/blob/master/preview/restaurant3.0_detail.JPG)
 
+## Environment set up
+1. Node.js
+2. MongoDB
+
 ## Install me now!
-1. 在終端機上輸入
+1. Open your terminal and enter: 
 
 ```
    git clone https://github.com/mpragnarok/restaurant-list.git
 ```
 
-2. 在 https://developers.facebook.com/ 申請第三方登入用的金鑰
+2. Register your own secret key at Facebook and Google:
+   
+   https://developers.facebook.com/ 
+   
+   https://developers.google.com/
 
-3. 在檔案 \restaurant-list 根目錄中創建一個名為 `.env` 的檔案，準備好您的金鑰並輸入以下指令：
+3. create a file named `.env` at `\restaurant-list` , get your secret keys and paste the following code: 
 
 ```
-   FACEBOOK_ID = <在此輸入FB ID>
-   FACEBOOK_SECRET = <在此輸入FB SECRET>
+   FACEBOOK_ID = <Your FB ID>
+   FACEBOOK_SECRET = <Your FB SECRET>
    FACEBOOK_CALLBACK=http://www.example.com/auth/facebook/callback 
 
-   GOOGLE_ID = <在此輸入GOOGLE ID>
-   GOOGLE_SECRET = <在此輸入GOOGLE SECRET>
+   GOOGLE_ID = <Your GOOGLE ID>
+   GOOGLE_SECRET = <Your GOOGLE SECRET>
    GOOGLE_CALLBACK=http://www.example.com/auth/google/callback
 ```
 
-4. 回到終端機，在根目錄下輸入
+4. Back to the terminal, and enter:
 
 ```
    npm install
 ```
 
-5. 至 `.\restaurant-list\models\seeds` 資料夾，執行以下指令
+5. cd to `.\restaurant-list\models\seeds` folder, and run the seeder js file by the code:
 
 ```
    node restaurantListSeeder
 ```
 
-6. 恭喜！現在您已經有以下兩個範例用使用者，他們各自擁有三個餐廳：
+6. Congratulations! Now two naive users are available, those are their information:
 
 ```
-   第一位使用者：
+   user1:
    email: user1@example.com
    password: 12345678
-   第二位使用者：
+   user2:
    email: user2@example.com
    password: 12345678
 ```
 
-7. 回到根目錄，輸入 `npm run dev` ，即可在 http://localhost:3000/ 看到網站！
-
-## Environment set up
-1. Node.js
-2. MongoDB
+7. cd back to the root, enter `npm run dev` and see it on http://localhost:3000/ 
 
 ## Dependencies
 1. "bcryptjs": "^2.4.3",
@@ -81,5 +85,5 @@
 12. "passport-local": "^1.0.0"
 13. "passport-google-oauth20": "^2.0.0"
 
-Bootstrap樣式：https://bootswatch.com/spacelab/
+Bootstrap style：https://bootswatch.com/spacelab/
 
